@@ -6,8 +6,8 @@ This project is a demonstration of the Playbook framework, which provides a set 
 
 This demo showcases a simple GraphQL API with filtering and pagination capabilities. The API is built using Quarkus, and it leverages the following Playbook libraries:
 
-- **playbook-base:** Provides base classes and utilities for building Playbook applications.
-- **playbook-postgresql:** Provides a pre-configured PostgreSQL integration, including a generic repository (`PlaybookRepo`) that simplifies data access.
+- **[playbook-base](https://github.com/ilidazilv/playbook-base):** Provides base classes and utilities for building Playbook applications.
+- **[playbook-postgresql](https://github.com/ilidazilv/playbook-postgresql):** Provides a pre-configured PostgreSQL integration, including a generic repository (`PlaybookRepo`) that simplifies data access.
 
 The demo application exposes a single GraphQL endpoint that allows you to query a list of `DemoEntity` objects. The query supports filtering by various criteria and pagination.
 
