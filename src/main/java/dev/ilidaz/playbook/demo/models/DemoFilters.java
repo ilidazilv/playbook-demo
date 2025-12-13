@@ -9,8 +9,6 @@ import dev.ilidaz.playbook.demo.entities.DemoEntity;
 import dev.ilidaz.playbook.demo.enums.DemoType;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.hibernate.annotations.JdbcType;
-import org.hibernate.type.descriptor.jdbc.EnumJdbcType;
 
 import java.io.Serializable;
 import java.util.List;

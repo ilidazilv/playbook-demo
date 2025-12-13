@@ -1,8 +1,15 @@
-# playbook-demo
+# Playbook Demo
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+This project is a demonstration of the Playbook framework, which provides a set of tools and libraries to accelerate the development of Quarkus applications.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+## Description
+
+This demo showcases a simple GraphQL API with filtering and pagination capabilities. The API is built using Quarkus, and it leverages the following Playbook libraries:
+
+- **playbook-base:** Provides base classes and utilities for building Playbook applications.
+- **playbook-postgresql:** Provides a pre-configured PostgreSQL integration, including a generic repository (`PlaybookRepo`) that simplifies data access.
+
+The demo application exposes a single GraphQL endpoint that allows you to query a list of `DemoEntity` objects. The query supports filtering by various criteria and pagination.
 
 ## Running the application in dev mode
 
@@ -13,6 +20,44 @@ You can run your application in dev mode that enables live coding using:
 ```
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+
+## GraphQL API
+
+The GraphQL API is available at <http://localhost:8080/graphql>. You can use the GraphiQL interface to explore the API and run queries.
+
+Here's an example query that retrieves a list of `DemoEntity` objects with some filters:
+
+```graphql
+query {
+  find(
+    filters: {
+      or: [
+        {
+          name: { iregex: "test" }
+          typeValue: { equalTo: RESIDENTIAL }
+        }
+        {
+          address: {
+            singleLine: { iregex: "street" }
+            apartmentsNo: { contains: [1.0, 2.0] }
+          }
+        }
+      ]
+    }
+    page: 0
+    size: 10
+  ) {
+    id
+    name
+    type
+    address {
+      id
+      singleLine
+      apartmentsNo
+    }
+  }
+}
+```
 
 ## Packaging and running the application
 
@@ -52,11 +97,3 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 You can then execute your native executable with: `./target/playbook-demo-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Provided Code
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
