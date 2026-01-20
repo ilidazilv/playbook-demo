@@ -18,11 +18,10 @@ jobs:
         with:
           java-version: '21'
           distribution: 'adopt'
-          server-id: github
           settings-path: ${{ github.workspace }}
 
       - name: Build
-        run: mvn -B package -s $GITHUB_WORKSPACE/settings.xml --file pom.xml
+        run: mvn -B package -s settings.xml --file pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
