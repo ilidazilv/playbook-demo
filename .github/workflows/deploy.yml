@@ -18,9 +18,11 @@ jobs:
         with:
           java-version: '21'
           distribution: 'adopt'
+          server-id: github
           settings-path: ${{ github.workspace }}
 
       - name: Test with Maven
-        run: mvn test -s $GITHUB_WORKSPACE/settings.xml
+        run: mvn test -s settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
