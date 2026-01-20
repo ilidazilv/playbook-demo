@@ -152,11 +152,11 @@
             <url>https://repo.maven.apache.org/maven2/</url>
         </repository>
         <repository>
-            <id>playbook-base</id>
+            <id>github</id>
             <url>https://maven.pkg.github.com/ilidazilv/playbook-base</url>
         </repository>
         <repository>
-            <id>playbook-postgresql</id>
+            <id>github</id>
             <url>https://maven.pkg.github.com/ilidazilv/playbook-postgresql</url>
         </repository>
     </repositories>
