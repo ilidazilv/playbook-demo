@@ -6,6 +6,8 @@ import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -24,6 +26,9 @@ public class DemoEntity {
     @Column(name = "type")
     @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     private DemoType type;
+
+    @ManyToMany(mappedBy = "demos")
+    private List<HostEntity> hosts;
 
     @ManyToOne
     @JoinColumn(name = "address_id")

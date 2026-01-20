@@ -1,6 +1,8 @@
 package dev.ilidaz.playbook.demo.models;
 
+import dev.ilidaz.playbook.base.filtering.annotations.FieldConfig;
 import dev.ilidaz.playbook.base.filtering.annotations.FilterConfig;
+import dev.ilidaz.playbook.base.filtering.enums.RelationType;
 import dev.ilidaz.playbook.base.filtering.models.DoubleListFilters;
 import dev.ilidaz.playbook.base.filtering.models.IntegerFilters;
 import dev.ilidaz.playbook.base.filtering.models.StringFilters;
@@ -18,9 +20,11 @@ import java.util.List;
 @NoArgsConstructor
 @FilterConfig(entityClass = AddressEntity.class)
 public class AddressFilters implements Serializable {
-    private StringFilters singleLine;
     private IntegerFilters id;
+    private StringFilters singleLine;
     private DoubleListFilters apartmentsNo;
+    @FieldConfig(relationType = RelationType.MULTIPLE)
+    private DemoFilters demos;
     private List<@NotNull AddressFilters> and;
     private List<@NotNull AddressFilters> or;
 }

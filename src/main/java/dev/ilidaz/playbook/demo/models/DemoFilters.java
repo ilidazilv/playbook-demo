@@ -2,6 +2,7 @@ package dev.ilidaz.playbook.demo.models;
 
 import dev.ilidaz.playbook.base.filtering.annotations.FieldConfig;
 import dev.ilidaz.playbook.base.filtering.annotations.FilterConfig;
+import dev.ilidaz.playbook.base.filtering.enums.RelationType;
 import dev.ilidaz.playbook.base.filtering.models.EnumFilters;
 import dev.ilidaz.playbook.base.filtering.models.IntegerFilters;
 import dev.ilidaz.playbook.base.filtering.models.StringFilters;
@@ -27,6 +28,8 @@ public class DemoFilters implements Serializable {
     private StringFilters singleLine;
     @FieldConfig(path = "type")
     private EnumFilters<DemoType> typeValue;
+    @FieldConfig(relationType = RelationType.MULTIPLE)
+    private HostFilters hosts;
     private List<@NotNull DemoFilters> and;
     private List<@NotNull DemoFilters> or;
 }
